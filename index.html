@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gerardo Genovese – Curriculum Personale</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #f9f6f1;
+      color: #2c2c2c;
+    }
+
+    .banner-laterale {
+      position: fixed;
+      top: 0;
+      width: 150px;
+      height: 100vh;
+      background-color: #000;
+      z-index: 0;
+    }
+
+    .banner-sinistra {
+      left: 0;
+    }
+
+    .banner-destra {
+      right: 0;
+    }
+
+    header, section, footer {
+      margin-left: 150px;
+      margin-right: 150px;
+    }
+
+    header {
+      background: #1a2a40;
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #4fd1c5;
+      text-shadow: 1px 1px 2px #000;
+      margin-bottom: 0.5rem;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav a {
+      display: inline-block;
+      margin: 0 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #fff;
+      color: #1a2a40;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #add8e6;
+      color: #000;
+    }
+
+    section {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    section.slide-left {
+      transform: translateX(-80px);
+    }
+
+    section.slide-right {
+      transform: translateX(80px);
+    }
+
+    section.visible.slide-left,
+    section.visible.slide-right {
+      transform: translateX(0);
+    }
+
+    .card {
+      background: #fff;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-left: 5px solid #1a2a40;
+      border-radius: 8px;
+    }
+
+    .card img.icon {
+      width: 32px;
+      height: 32px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    h2, h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      margin-top: 1rem;
+    }
+
+    .profilo-img {
+      float: right;
+      margin-left: 1rem;
+      max-width: 120px;
+      border-radius: 50%;
+      border: 2px solid #1a2a40;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #1a2a40;
+      color: #fff;
+      margin-left: 150px;
+      margin-right: 150px;
+    }
+
+    @media (max-width: 768px) {
+      .banner-laterale {
+        display: none;
+      }
+
+      header, section, footer {
+        margin: 0;
+      }
+
+      .profilo-img {
+        float: none;
+        display: block;
+        margin: 0 auto 1rem;
+      }
+
+      nav a {
+        display: block;
+        margin: 0.5rem auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner laterali -->
+  <div class="banner-laterale banner-sinistra"></div>
+  <div class="banner-laterale banner-destra"></div>
+
+  <!-- Intestazione -->
+  <header>
+    <h1>Gerardo Genovese</h1>
+    <p>Studente in Ingegneria Chimica Alimentare</p>
+    <nav>
+      <a href="#profilo">Profilo</a>
+      <a href="#formazione">Formazione</a>
+      <a href="#competenze">Competenze</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+  </header>
+
+  <!-- Profilo -->
+  <section id="profilo" class="slide-left">
+    <h2><img class="icon" src="icon-user.png" alt="">Profilo Personale</h2>
+    <div class="card">
+      <img class="profilo-img" src="mia-foto.jpg" alt="Foto di Gerardo Genovese" />
+      <p>Sono uno studente universitario motivato e intraprendente, iscritto al corso di laurea in Ingegneria Chimica Alimentare presso l'Università degli Studi di Salerno.</p>
+      <p>Sono una persona cordiale, gioviale, determinato e con una forte volontà di fare, imparare rapidamente ed efficientemente le mansioni richieste, rispettoso degli orari. Cerco un'opportunità per crescere professionalmente e contribuire con impegno e dedizione.</p>
+    </div>
+  </section>
+
+  <!-- Formazione -->
+  <section id="formazione" class="slide-right">
+    <h2><img class="icon" src="icon-education.png" alt="">Formazione</h2>
+    <div class="card">
+      <ul>
+        <li>Diploma Liceo Scientifico “F. Severi” – Scienze Applicate, Salerno</li>
+        <li>Studente in Ingegneria Chimica Alimentare – Università degli Studi di Salerno</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Competenze -->
+  <section id="competenze" class="slide-left">
+    <h2><img class="icon" src="icon-skills.png" alt="">Competenze</h2>
+    <div class="card">
+      <ul>
+        <li>Conoscenza di base del pacchetto Office (Word, Excel, PowerPoint)</li>
+        <li>Facilità nell'apprendere nuovi strumenti e software</li>
+      </ul>
+    </div>
+
+    <h3><img class="icon" src="icon-language.png" alt="">Lingue</h3>
+    <div class="card">
+      <ul>
+        <li>🇮🇹 Italiano: Madrelingua</li>
+        <li>🇬🇧 Inglese: Conoscenza Discreta</li>
+      </ul>
+    </div>
+
+    <h3><img class="icon" src="icon-hobby.png" alt="">Interessi e Hobby</h3>
+    <div class="card">
+      <ul>
+        <li>Finanza personale e gestione del risparmio</li>
+        <li>Background sportivo (taekwondo e palestra), con esperienza di disciplina e costanza</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contatti -->
+  <section id="contatti" class="slide-right">
+    <h2><img class="icon" src="icon-contact.png" alt="">Contatti</h2>
+    <div class="card">
+      <p><strong>Email:</strong> <a href="mailto:gerardo.genovese5656@gmail.com">gerardo.genovese5656@gmail.com</a></p>
+      <p><strong>Telefono / WhatsApp:</strong> <a href="tel:+393924620261">+39 392 462 0261</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>2025 - Gerardo Genovese</p>
+  </footer>
+
+  <!-- Bottone fisso per download PDF -->
+  <a href="https://www.dropbox.com/scl/fi/tg99jmyywbryiw6xj1yz6/Curriculum_GenoveseGerardo.pdf?rlkey=dyxtxs1398ekdnh6oml6pn24j&st=bgvud3h6&dl=0" 
+     download="GerardoGenovese_Curriculum.pdf"
+     style="
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #4fd1c5;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-decoration: none;
+        box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        z-index: 1000;
+     ">
+     PDF Curriculum Gerardo Genovese
+  </a>
+
+  <!-- JS per animazioni on scroll -->
+  <script>
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+
+</body>
+</html>
