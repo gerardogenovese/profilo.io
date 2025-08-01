@@ -151,6 +151,23 @@
       margin-right: 150px;
     }
 
+    /* Bottone download fisso in basso */
+    #downloadBtn {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #4fd1c5;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+      z-index: 1000;
+      cursor: pointer;
+    }
+
     @media (max-width: 768px) {
       .banner-laterale {
         display: none;
@@ -249,28 +266,11 @@
   </section>
 
   <footer>
-    <p>2025 - Gerardo Genovese</p>
+    <p> 2025 - Gerardo Genovese</p>
   </footer>
 
   <!-- Bottone fisso per download PDF -->
-  <a href="https://www.dropbox.com/scl/fi/tg99jmyywbryiw6xj1yz6/Curriculum_GenoveseGerardo.pdf?rlkey=dyxtxs1398ekdnh6oml6pn24j&st=bgvud3h6&dl=1" 
-     download="GerardoGenovese_Curriculum.pdf"
-     style="
-        position: fixed;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #4fd1c5;
-        color: white;
-        padding: 12px 24px;
-        border-radius: 8px;
-        font-weight: bold;
-        text-decoration: none;
-        box-shadow: 0 0 5px rgba(0,0,0,0.3);
-        z-index: 1000;
-     ">
-     PDF Curriculum Gerardo Genovese
-  </a>
+  <a href="#" id="downloadBtn">PDF Curriculum Gerardo Genovese</a>
 
   <!-- JS per animazioni on scroll -->
   <script>
@@ -287,6 +287,25 @@
     });
 
     sections.forEach(section => observer.observe(section));
+
+
+    // Script per forzare download PDF da Dropbox
+    document.getElementById('downloadBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      const url = 'https://www.dropbox.com/scl/fi/tg99jmyywbryiw6xj1yz6/Curriculum_GenoveseGerardo.pdf?rlkey=dyxtxs1398ekdnh6oml6pn24j&st=bgvud3h6&dl=1';
+
+      fetch(url)
+        .then(resp => resp.blob())
+        .then(blob => {
+          const link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = 'Curriculum_GenoveseGerardo.pdf';
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+        })
+        .catch(() => alert('Errore nel download del file.'));
+    });
   </script>
 
 </body>
