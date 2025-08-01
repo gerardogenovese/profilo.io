@@ -277,7 +277,9 @@
   </footer>
 
   <!-- Bottone download PDF -->
-  <a href="#" id="downloadBtn">PDF Curriculum Gerardo Genovese</a>
+  <a href="https://www.dropbox.com/scl/fi/tg99jmyywbryiw6xj1yz6/Curriculum_GenoveseGerardo.pdf?rlkey=dyxtxs1398ekdnh6oml6pn24j&st=bgvud3h6&dl=1" target="_blank" id="downloadBtn" rel="noopener noreferrer">
+    Scarica Il Curriculum Qui
+  </a>
 
   <!-- JS per animazioni on scroll -->
   <script>
@@ -294,20 +296,6 @@
     });
 
     sections.forEach(section => observer.observe(section));
-
-    // Download PDF tramite iframe nascosto
-    document.getElementById('downloadBtn').addEventListener('click', function(e) {
-      e.preventDefault();
-
-      const url = 'https://www.dropbox.com/scl/fi/tg99jmyywbryiw6xj1yz6/Curriculum_GenoveseGerardo.pdf?rlkey=dyxtxs1398ekdnh6oml6pn24j&st=bgvud3h6&dl=1';
-
-      const iframe = document.createElement('iframe');
-      iframe.style.display = 'none';
-      iframe.src = url;
-      document.body.appendChild(iframe);
-
-      setTimeout(() => document.body.removeChild(iframe), 5000);
-    });
   </script>
 
 </body>
