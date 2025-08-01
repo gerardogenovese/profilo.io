@@ -15,6 +15,7 @@
       font-family: 'Arial', sans-serif;
       background: #f9f6f1;
       color: #2c2c2c;
+      padding-bottom: 60px; /* spazio per bottone fisso */
     }
 
     .banner-laterale {
@@ -151,21 +152,27 @@
       margin-right: 150px;
     }
 
-    /* Bottone download fisso in basso */
+    /* Bottone fisso in basso */
     #downloadBtn {
       position: fixed;
       bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
-      background-color: #4fd1c5;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
+      background-color: #1a2a40;
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
       font-weight: bold;
       text-decoration: none;
-      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       z-index: 1000;
       cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #downloadBtn:hover {
+      background-color: #4fd1c5;
+      color: #000;
     }
 
     @media (max-width: 768px) {
@@ -269,7 +276,7 @@
     <p> 2025 - Gerardo Genovese</p>
   </footer>
 
-  <!-- Bottone fisso per download PDF -->
+  <!-- Bottone download PDF -->
   <a href="#" id="downloadBtn">PDF Curriculum Gerardo Genovese</a>
 
   <!-- JS per animazioni on scroll -->
@@ -288,23 +295,18 @@
 
     sections.forEach(section => observer.observe(section));
 
-
-    // Script per forzare download PDF da Dropbox
+    // Download PDF tramite iframe nascosto
     document.getElementById('downloadBtn').addEventListener('click', function(e) {
       e.preventDefault();
+
       const url = 'https://www.dropbox.com/scl/fi/tg99jmyywbryiw6xj1yz6/Curriculum_GenoveseGerardo.pdf?rlkey=dyxtxs1398ekdnh6oml6pn24j&st=bgvud3h6&dl=1';
 
-      fetch(url)
-        .then(resp => resp.blob())
-        .then(blob => {
-          const link = document.createElement('a');
-          link.href = window.URL.createObjectURL(blob);
-          link.download = 'Curriculum_GenoveseGerardo.pdf';
-          document.body.appendChild(link);
-          link.click();
-          link.remove();
-        })
-        .catch(() => alert('Errore nel download del file.'));
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = url;
+      document.body.appendChild(iframe);
+
+      setTimeout(() => document.body.removeChild(iframe), 5000);
     });
   </script>
 
